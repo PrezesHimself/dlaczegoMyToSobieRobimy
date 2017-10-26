@@ -17,9 +17,7 @@ class RecordsController extends BaseController {
     }
 
     create = async (req, res, next) => {
-        console.log(req.body);
         const params = this.filterParams(req.body, this.whitelist);
-        console.log(params);
         let newRecord = new Record({
             ...params,
             provider: 'local',

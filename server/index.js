@@ -6,11 +6,10 @@ import bodyParser from 'body-parser';
 // Use native promises
 mongoose.Promise = global.Promise;
 
+
 // Connect to our mongo database;
-mongoose.connect(process.env.MONGODB_URI);
-mongoose.connection.on('error', (err) => {
-    throw err;
-});
+mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true })
+    .catch(err => console.error(err));
 
 const app = express();
 
