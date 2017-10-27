@@ -2,12 +2,12 @@ import express from 'express';
 import routes from './routes';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv'
 
-// Use native promises
+dotenv.config();
+
 mongoose.Promise = global.Promise;
 
-
-// Connect to our mongo database;
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true })
     .catch(err => console.error(err));
 
